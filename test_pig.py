@@ -47,11 +47,11 @@ class TestGame(unittest.TestCase):
 
     def test_is_winner(self):
         # Test when a player has not won yet
-        self.assertFalse(self.game.is_winner(self.players[0]))
+        self.assertFalse(self.game.is_winner(self.players[0],turnScore = 0))
 
         # Test when a player wins
-        self.players[0].addToScore(10)  # Score to win is 10
-        self.assertTrue(self.game.is_winner(self.players[0]))
+        self.players[0].addToScore(10)  # Score to win is 100
+        self.assertTrue(self.game.is_winner(self.players[0], turnScore = 100))
 
     @patch('builtins.input', side_effect=['h'])  # Simulate user input 'hold'
     def test_turn_hold(self, mock_input):
